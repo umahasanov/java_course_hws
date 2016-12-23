@@ -16,7 +16,7 @@ public class RunnableWrapper implements Runnable {
 
             Runnable runnable;
             synchronized (runnables) {
-                if (runnables.isEmpty()) {
+                while (runnables.isEmpty()) {
                     try {
                         runnables.wait();
                     } catch (InterruptedException e) {
